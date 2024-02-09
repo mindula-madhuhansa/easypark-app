@@ -63,6 +63,19 @@ export default function ParkingCard({ place, isFavorite, markedFavorite }) {
     //     place?.formattedAddress,
     // });
     // Linking.openURL(url);
+
+    const url = Platform.select({
+      ios:
+        "maps:" +
+        place.latitude +
+        "," +
+        place.longitude +
+        "?q=" +
+        place.address,
+      android:
+        "geo:" + place.latitude + "," + place.longitude + "?q=" + place.address,
+    });
+    Linking.openURL(url);
   };
 
   return (
@@ -73,7 +86,7 @@ export default function ParkingCard({ place, isFavorite, markedFavorite }) {
             style={styles.heartIcon}
             onPress={() => onSetFavorite(place)}
           >
-            <Ionicons name="heart-outline" size={30} color="white" />
+            <Ionicons name="heart-outline" size={30} color="black" />
           </Pressable>
         ) : (
           <Pressable
@@ -84,21 +97,29 @@ export default function ParkingCard({ place, isFavorite, markedFavorite }) {
           </Pressable>
         )}
 
-        <View style={styles.viewCountContainer}>
+        {/* <View style={styles.viewCountContainer}>
           <Ionicons name="eye" size={24} color="white" />
           <Text style={styles.countText}>05</Text>
-        </View>
+        </View> */}
 
         <Image
+          // source={
+          //   place?.photos
+          //     ? {
+          //         uri:
+          //           PLACE_PHOTO_BASE_URL +
+          //           place?.photos[0]?.name +
+          //           "/media?key=" +
+          //           GlobalAPI?.GOOGLE_MAPS_API_KEY +
+          //           "&maxHeightPx=600&maxWidthPx=1000",
+          //       }
+          //     : Images.CarPark
+          // }
+
           source={
-            place?.photos
+            place.imageUrl
               ? {
-                  uri:
-                    PLACE_PHOTO_BASE_URL +
-                    place?.photos[0]?.name +
-                    "/media?key=" +
-                    GlobalAPI?.GOOGLE_MAPS_API_KEY +
-                    "&maxHeightPx=600&maxWidthPx=1000",
+                  uri: place.imageUrl,
                 }
               : Images.CarPark
           }

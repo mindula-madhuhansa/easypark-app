@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
   heartIcon: {
     position: "absolute",
     right: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.4)",
     padding: 8,
     borderRadius: 10,
   },
