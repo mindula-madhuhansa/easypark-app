@@ -1,33 +1,10 @@
-{
-    "boundingBox": {
-        "origin": {
-            "x": 238,
-            "y": 67.66666412353516
-        },
-        "size": {
-            "height": 191.3333282470703,
-            "width": 168.6666717529297
-        }
-    },
-    "cornerPoints": [
-        {
-            "x": 259,
-            "y": 242
-        },
-        {
-            "x": 254.6666717529297,
-            "y": 406.6666564941406
-        },
-        {
-            "x": 67.66666412353516,
-            "y": 402.6666564941406
-        },
-        {
-            "x": 72,
-            "y": 238
-        }
-    ],
-    "data": "Hello",
-    "target": 435,
-    "type": 256
-}
+[
+    {
+        "checkInTime": "21:11:50",
+        "checkOutTime": "21:23:04",
+        "id": "user_2bUcV0Rs42euRCrH9uHN3dcu23H",
+        "parkingSpaceId": "universityparking_6975403446446829_7991555124521255",
+        "userEmail": "mimmindula@gmail.com",
+        "userName": "Mindula Madhuhansa"
+    }
+]

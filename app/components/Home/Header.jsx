@@ -3,8 +3,6 @@ import { useNavigation } from "@react-navigation/native";
 import { useUser } from "@clerk/clerk-expo";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 
-import { GOOGLE_MAPS_API_KEY } from "@env";
-
 import styles from "../../styles/Home/Header";
 
 export default function Header({ searchedLocation }) {
@@ -26,7 +24,7 @@ export default function Header({ searchedLocation }) {
           }}
           minLength={2}
           query={{
-            key: GOOGLE_MAPS_API_KEY,
+            key: "AIzaSyBxdgDfR2cZUeidRpT4--I--e2ZQpeOpMU",
             language: "en",
           }}
         />

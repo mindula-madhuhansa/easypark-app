@@ -1,9 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { FIREBASE_API_KEY } from "@env";
 
 const firebaseConfig = {
-  apiKey: FIREBASE_API_KEY,
+  apiKey: "AIzaSyCYnPqjbkx0vgjmRlsnNPid2lYXXOgRdAE",
   authDomain: "easypark-cc6dd.firebaseapp.com",
   projectId: "easypark-cc6dd",
   storageBucket: "easypark-cc6dd.appspot.com",

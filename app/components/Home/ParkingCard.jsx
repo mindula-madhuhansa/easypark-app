@@ -8,15 +8,15 @@ import {
   Linking,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { deleteDoc, doc, setDoc } from "firebase/firestore";
+import { deleteDoc, doc, getDoc, onSnapshot, setDoc } from "firebase/firestore";
 import { useUser } from "@clerk/clerk-expo";
 
 import { Images } from "../../constants";
-import { GlobalAPI } from "../../utils";
 import { db } from "../../config/Firebase";
 import styles from "../../styles/Home/ParkingCard";
 
 import { Ionicons } from "@expo/vector-icons";
+import { useEffect, useState } from "react";
 
 export default function ParkingCard({ place, isFavorite, markedFavorite }) {
   const { user } = useUser();
@@ -77,6 +77,24 @@ export default function ParkingCard({ place, isFavorite, markedFavorite }) {
     });
     Linking.openURL(url);
   };
+
+  const [usedSlots, setUsedSlots] = useState("");
+
+  useEffect(() => {
+    const parkingId = place.id;
+    const parkingSpaceRef = doc(db, "parking-spaces", parkingId);
+
+    const unsubscribe = onSnapshot(parkingSpaceRef, (docSnap) => {
+      if (docSnap.exists()) {
+        const usedSlots = docSnap.data().freeSlots;
+        setUsedSlots(usedSlots);
+      } else {
+        console.log("No such document!");
+      }
+    });
+
+    return () => unsubscribe();
+  }, [place.id]);
 
   return (
     <View style={styles.container}>
@@ -149,7 +167,7 @@ export default function ParkingCard({ place, isFavorite, markedFavorite }) {
                 <View style={styles.slotTextContainer}>
                   <Text style={styles.parkingSlots}>Free Slots: </Text>
                   <Text style={styles.parkingSlotsCount}>
-                    {place.freeSlots}
+                    {place.slots - usedSlots}
                   </Text>
                 </View>
                 <View style={styles.slotTextContainer}>

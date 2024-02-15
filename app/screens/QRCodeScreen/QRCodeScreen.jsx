@@ -125,7 +125,10 @@ export default function QRCodeScreen({ navigation }) {
           });
           ToastAndroid.show("QR scanned successfully", ToastAndroid.SHORT);
           setScannedData("");
-          navigation.navigate("payment");
+          navigation.navigate("payment", {
+            parkingId: parkingSpaceId,
+            userUd: user.id,
+          });
         } catch (error) {
           console.error("Error updating field: ", error);
         }

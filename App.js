@@ -13,8 +13,6 @@ import { UserLocationContext } from "./app/context";
 import { WelcomeScreen } from "./app/screens";
 import StackNavigation from "./app/routers/StackNavigation";
 
-import { CLERK_AUTH_API_KEY } from "@env";
-
 SplashScreen.preventAutoHideAsync();
 
 const tokenCache = {
@@ -76,7 +74,10 @@ export default function App() {
   }
 
   return (
-    <ClerkProvider tokenCache={tokenCache} publishableKey={CLERK_AUTH_API_KEY}>
+    <ClerkProvider
+      tokenCache={tokenCache}
+      publishableKey="pk_test_YWRqdXN0ZWQtdHJvdXQtNTUuY2xlcmsuYWNjb3VudHMuZGV2JA"
+    >
       <UserLocationContext.Provider value={{ location, setLocation }}>
         <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
           <SignedIn>

@@ -1,5 +1,10 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { FavoriteScreen, HomeScreen, QRCodeScreen } from "../screens";
+import {
+  FavoriteScreen,
+  HomeScreen,
+  PaymentScreen,
+  QRCodeScreen,
+} from "../screens";
 
 import { Ionicons } from "@expo/vector-icons";
 
