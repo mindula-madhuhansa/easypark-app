@@ -2,11 +2,8 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useAuth, useUser } from "@clerk/clerk-expo";
 
-import styles from "../../styles/Profile/ProfileScreen";
-
-import { Ionicons } from "@expo/vector-icons";
-import { AntDesign } from "@expo/vector-icons";
 import SettingButton from "../../components/Profile/SettingButton";
+import NavBar from "../../components/Header/NavBar";
 
 export default function ProfileScreen({ navigation }) {
   const { user } = useUser();
@@ -17,14 +14,7 @@ export default function ProfileScreen({ navigation }) {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        <View style={styles.headerContainer}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Ionicons name="arrow-back-sharp" size={24} color="black" />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <AntDesign name="edit" size={24} color="black" />
-          </TouchableOpacity>
-        </View>
+        <NavBar />
 
         <View style={styles.userContainer}>
           <Image source={{ uri: user?.imageUrl }} style={styles.userImage} />

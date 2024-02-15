@@ -1,62 +1,33 @@
-[
-    {
-        "address": "No 52 Gregory Rd, Kalutara",
-        "id": "donsplazapubliccarpark_658219122076591_7996231523191877",
-        "latitude": "6.58219122076591",
-        "longitude": "79.96231523191877",
-        "parkingName": "Dons Plaza Public Car Park",
-        "parkingRate": "50",
-        "parkingType": "Customer",
-        "slots": "12"
+{
+    "boundingBox": {
+        "origin": {
+            "x": 238,
+            "y": 67.66666412353516
+        },
+        "size": {
+            "height": 191.3333282470703,
+            "width": 168.6666717529297
+        }
     },
-    {
-        "address": "HXP7+JJM, Sir Cyril De Zoysa Mawatha, Kalutara",
-        "id": "kalutaramunicipalpubliccouncilvehiclepark_6587111186755732_7996403119827302",
-        "latitude": "6.587111186755732",
-        "longitude": "79.96403119827302",
-        "parkingName": "Kalutara Municipal Public Council Vehicle Park",
-        "parkingRate": "50",
-        "parkingType": "",
-        "slots": "30"
-    },
-    {
-        "address": "Kalutara Highway Bridge, A2, Kalutara",
-        "id": "kalutharabodhiyaparkingplace_6590875331335477_799602059381886",
-        "latitude": "6.590875331335477",
-        "longitude": "79.9602059381886",
-        "parkingName": "Kaluthara bodhiya parking place",
-        "parkingRate": 0,
-        "parkingType": "",
-        "slots": "16"
-    },
-    {
-        "address": "HX5G+PQ7, Kalutara-Matugama Rd, Katukurunda",
-        "id": "nihscarpark_6559639179937612_7997675181797081",
-        "latitude": "6.559639179937612",
-        "longitude": "79.97675181797081",
-        "parkingName": "NIHS car park",
-        "parkingRate": 0,
-        "parkingType": "Customer",
-        "slots": "10"
-    },
-    {
-        "address": "HX79+J26, Kalutara",
-        "id": "priskacinema-carpark_656430762464082_7996743918874083",
-        "latitude": "6.56430762464082",
-        "longitude": "79.96743918874083",
-        "parkingName": "Priska Cinema - Car Park",
-        "parkingRate": "25",
-        "parkingType": "Customer",
-        "slots": "8"
-    },
-    {
-        "address": "No 52 Chamli Gunawardhana Mawatha, Kalutara",
-        "id": "publiccarpark-gregoryroad_6581760899136725_7996266156453304",
-        "latitude": "6.581760899136725",
-        "longitude": "79.96266156453304",
-        "parkingName": "Public Car Park - Gregory Road",
-        "parkingRate": "50",
-        "parkingType": "",
-        "slots": "20"
-    }
-]
+    "cornerPoints": [
+        {
+            "x": 259,
+            "y": 242
+        },
+        {
+            "x": 254.6666717529297,
+            "y": 406.6666564941406
+        },
+        {
+            "x": 67.66666412353516,
+            "y": 402.6666564941406
+        },
+        {
+            "x": 72,
+            "y": 238
+        }
+    ],
+    "data": "Hello",
+    "target": 435,
+    "type": 256
+}

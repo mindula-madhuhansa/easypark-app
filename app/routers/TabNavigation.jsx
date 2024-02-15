@@ -22,13 +22,13 @@ export default function TabNavigation() {
         }}
       />
       <Tab.Screen
-        name="qr"
+        name="scan"
         component={QRCodeScreen}
         options={{
-          tabBarLabel: "QR",
+          tabBarLabel: "Scan",
           tabBarActiveTintColor: Colors.PRIMARY,
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="qr-code-sharp" size={size} color={color} />
+            <Ionicons name="camera" size={size} color={color} />
           ),
         }}
       />

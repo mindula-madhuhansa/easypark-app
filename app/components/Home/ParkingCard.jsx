@@ -148,7 +148,9 @@ export default function ParkingCard({ place, isFavorite, markedFavorite }) {
               <View style={styles.slotsContainer}>
                 <View style={styles.slotTextContainer}>
                   <Text style={styles.parkingSlots}>Free Slots: </Text>
-                  <Text style={styles.parkingSlotsCount}>10</Text>
+                  <Text style={styles.parkingSlotsCount}>
+                    {place.freeSlots}
+                  </Text>
                 </View>
                 <View style={styles.slotTextContainer}>
                   <Text style={styles.parkingSlots}>Total Slots: </Text>
