@@ -120,6 +120,10 @@ export default function ParkingCard({ place, isFavorite, markedFavorite }) {
           <Text style={styles.countText}>05</Text>
         </View> */}
 
+        <View style={styles.viewCountContainer}>
+          <Text style={styles.countText}>{place.parkingType}</Text>
+        </View>
+
         <Image
           // source={
           //   place?.photos
@@ -173,6 +177,12 @@ export default function ParkingCard({ place, isFavorite, markedFavorite }) {
                 <View style={styles.slotTextContainer}>
                   <Text style={styles.parkingSlots}>Total Slots: </Text>
                   <Text style={styles.parkingSlotsCount}>{place.slots}</Text>
+                </View>
+                <View style={styles.slotTextContainer}>
+                  <Text style={styles.parkingSlots}>Rate: </Text>
+                  <Text style={styles.parkingSlotsCount}>
+                    LKR {place.parkingRate}.00
+                  </Text>
                 </View>
               </View>
 

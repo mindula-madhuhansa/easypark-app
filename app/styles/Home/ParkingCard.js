@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 
-  countText: { fontFamily: "poppins-medium", color: Colors.WHITE },
+  countText: { fontFamily: "poppins-bold", color: Colors.TERTIARY },
 
   carParkImage: {
     width: "100%",
