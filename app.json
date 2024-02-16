@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "EasyPark",
-    "slug": "EasyPark",
+    "slug": "easypark-2",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -44,8 +44,10 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "432ccf95-42a4-43be-9011-db386671413e"
+        "projectId": "af102f15-0713-4277-a6dd-1db0466879ea"
       }
-    }
+    },
+    "scheme": "com.kdmindulamc.EasyPark",
+    "owner": "kdmindulamc"
   }
 }

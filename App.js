@@ -76,7 +76,9 @@ export default function App() {
   return (
     <ClerkProvider
       tokenCache={tokenCache}
-      publishableKey="pk_test_YWRqdXN0ZWQtdHJvdXQtNTUuY2xlcmsuYWNjb3VudHMuZGV2JA"
+      publishableKey={
+        "pk_test_YWRqdXN0ZWQtdHJvdXQtNTUuY2xlcmsuYWNjb3VudHMuZGV2JA"
+      }
     >
       <UserLocationContext.Provider value={{ location, setLocation }}>
         <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
