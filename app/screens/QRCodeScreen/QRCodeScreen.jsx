@@ -2,6 +2,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useUser } from "@clerk/clerk-expo";
 import { useState, useEffect } from "react";
 import { Camera, CameraType } from "expo-camera";
+import { useIsFocused } from "@react-navigation/native";
 
 import styles from "../../styles/QR/QRCodeScreen";
 import {
@@ -19,6 +20,7 @@ import { ToastAndroid } from "react-native";
 
 export default function QRCodeScreen({ navigation }) {
   const { user } = useUser();
+  const isFocused = useIsFocused();
   const [scannedData, setScannedData] = useState("No result");
   const [permission, setPermission] = useState({
     isGranted: false,
@@ -42,6 +44,17 @@ export default function QRCodeScreen({ navigation }) {
       });
     }
   }, [permission]);
+
+  useEffect(() => {
+    if (isFocused && permission.isGranted) {
+      // Only start the camera if the screen is focused and permission is granted
+      return () => {
+        // Clean up function to stop the camera when the component unmounts
+        // (This will run when the screen loses focus or the component unmounts)
+        // Stop camera or any other cleanup actions
+      };
+    }
+  }, [isFocused, permission.isGranted]);
 
   useEffect(() => {
     if (scannedData !== "No result") {
@@ -140,7 +153,7 @@ export default function QRCodeScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.wrapper}>
-      {permission.isGranted && (
+      {isFocused && permission.isGranted && (
         <Camera
           type={CameraType.back}
           ratio={"16:9"}
