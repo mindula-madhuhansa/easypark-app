@@ -24,7 +24,7 @@ export default function Header({ searchedLocation }) {
           }}
           minLength={2}
           query={{
-            key: "AIzaSyBxdgDfR2cZUeidRpT4--I--e2ZQpeOpMU",
+            key: process.env.GOOGLE_MAPS_API_KEY,
             language: "en",
           }}
         />

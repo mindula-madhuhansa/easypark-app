@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { View } from "react-native";
+import { KeyboardAvoidingView, Platform, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { Header, Map, ParkingListView } from "../../components/Home";
@@ -57,20 +57,25 @@ export default function HomeScreen() {
   return (
     <SelectMarkerContext.Provider value={{ selectedMarker, setSelectedMarker }}>
       <SafeAreaView style={styles.container}>
-        <View style={styles.headerContainer}>
-          <Header
-            searchedLocation={(location) =>
-              setLocation({
-                latitude: location.lat,
-                longitude: location.lng,
-              })
-            }
-          />
-        </View>
-        {placeList && <Map placeList={placeList} />}
-        <View style={styles.placesListContainer}>
-          {placeList && <ParkingListView placeList={placeList} />}
-        </View>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+          keyboardVerticalOffset={Platform.OS === "ios" ? -64 : 0}
+        >
+          <View style={styles.headerContainer}>
+            <Header
+              searchedLocation={(location) =>
+                setLocation({
+                  latitude: location.lat,
+                  longitude: location.lng,
+                })
+              }
+            />
+          </View>
+          {placeList && <Map placeList={placeList} />}
+          <View style={styles.placesListContainer}>
+            {placeList && <ParkingListView placeList={placeList} />}
+          </View>
+        </KeyboardAvoidingView>
       </SafeAreaView>
     </SelectMarkerContext.Provider>
   );

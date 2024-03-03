@@ -2,11 +2,10 @@ import { Text, Pressable } from "react-native";
 
 import styles from "../../styles/Welcome/AccountButton";
 import { Colors } from "../../constants";
-import { useNavigation } from "@react-navigation/native";
 
 export default function AccountButton({ text, routeName, navigation }) {
   const onPress = () => {
-    navigation.navigate(routeName);
+    // navigation.navigate(routeName);
   };
 
   return (

@@ -5,7 +5,7 @@ const BASE_URL = "https://places.googleapis.com/v1/places:searchNearby";
 const config = {
   headers: {
     "Content-Type": "application/json",
-    "X-Goog-Api-Key": "AIzaSyBxdgDfR2cZUeidRpT4--I--e2ZQpeOpMU",
+    "X-Goog-Api-Key": process.env.GOOGLE_MAPS_API_KEY,
     "X-Goog-FieldMask": [
       "places.displayName",
       "places.formattedAddress",
