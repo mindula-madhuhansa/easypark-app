@@ -7,6 +7,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { db } from "../../config/Firebase";
 import {
   collection,
+  deleteDoc,
   doc,
   getDoc,
   getDocs,
@@ -15,11 +16,14 @@ import {
 import { useEffect, useState } from "react";
 import { getCheckedTime } from "../../utils/getCheckedTime";
 import { getTimeDiff } from "../../utils/getTimeDIff";
+import { useUser } from "@clerk/clerk-expo";
 
 export default function PaymentScreen({ navigation, route }) {
   const [details, setDetails] = useState([]);
   const [rate, setRate] = useState();
-  const { parkingId, userId } = route.params;
+  const { parkingId } = route.params;
+  const { user } = useUser();
+  const [parkingTimeLogRef, setParkingTimeLogRef] = useState(null);
 
   const currentDate = new Date();
   const dayOfMonth = currentDate.getDate();
@@ -48,11 +52,12 @@ export default function PaymentScreen({ navigation, route }) {
       parkingId,
       "parkedUsers"
     );
+    setParkingTimeLogRef(parkingTimeLogRef);
 
     const parkingSpaceRef = doc(db, "parking-spaces", parkingId);
 
     try {
-      const data = await getDocs(parkingTimeLogRef, userId);
+      const data = await getDocs(parkingTimeLogRef, user.id);
       const filteredData = data.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
@@ -78,8 +83,15 @@ export default function PaymentScreen({ navigation, route }) {
   }
 
   async function handlePay() {
+    if (!parkingTimeLogRef) return;
+
     await updateDoc(doc(collection(db, "qr-scan"), "qr"), {
       isScannedOut: "true",
+    });
+
+    await updateDoc(doc(parkingTimeLogRef, user.id), {
+      checkInTime: "",
+      checkOutTime: "",
     });
 
     navigation.navigate("home");

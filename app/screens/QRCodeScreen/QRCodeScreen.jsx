@@ -8,6 +8,7 @@ import styles from "../../styles/QR/QRCodeScreen";
 import {
   collection,
   doc,
+  getDoc,
   getDocs,
   query,
   setDoc,
@@ -130,18 +131,25 @@ export default function QRCodeScreen({ navigation }) {
           "parkedUsers"
         );
         try {
-          // Update the field in the document
-
-          const currentTime = getCurrentTimeFormatted();
-          await updateDoc(doc(parkingTimeLogRef, user.id), {
-            checkOutTime: currentTime,
-          });
-          ToastAndroid.show("QR scanned successfully", ToastAndroid.SHORT);
-          setScannedData("");
-          navigation.navigate("payment", {
-            parkingId: parkingSpaceId,
-            userUd: user.id,
-          });
+          const userDocRef = doc(parkingTimeLogRef, user.id);
+          const userDocSnapshot = await getDoc(userDocRef);
+          if (
+            !userDocSnapshot.exists() ||
+            !userDocSnapshot.data().checkInTime
+          ) {
+            ToastAndroid.show("Wrong QR", ToastAndroid.TOP);
+          } else {
+            const currentTime = getCurrentTimeFormatted();
+            await updateDoc(doc(parkingTimeLogRef, user.id), {
+              checkOutTime: currentTime,
+            });
+            ToastAndroid.show("QR scanned successfully", ToastAndroid.SHORT);
+            setScannedData("");
+            navigation.navigate("payment", {
+              parkingId: parkingSpaceId,
+              userId: user.id,
+            });
+          }
         } catch (error) {
           console.error("Error updating field: ", error);
         }

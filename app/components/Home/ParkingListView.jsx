@@ -14,7 +14,7 @@ export default function PlaceListView({ placeList }) {
   const flatListRef = useRef(null);
   const { user } = useUser();
 
-  const { selectedMarker, setSelectedMarker } = useContext(SelectMarkerContext);
+  const { selectedMarker } = useContext(SelectMarkerContext);
   const [favoriteList, setFavoriteList] = useState([]);
 
   useEffect(() => {
